@@ -209,6 +209,18 @@ background:#38bdf8;
 border-radius:10px;
 }
 
+.project-card{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+transition:0.3s;
+}
+
+.project-card:hover{
+transform:translateY(-10px);
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
 .ml{width:90%}
 .nlp{width:85%}
 .dl{width:80%}
