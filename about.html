@@ -1,121 +1,223 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About | Prabhat Sharma — AI Developer</title>
+  <meta name="description" content="Learn about Prabhat Sharma, an AI Developer specializing in Machine Learning, NLP, and Deep Learning systems.">
+  <meta property="og:title" content="About Prabhat Sharma | AI Developer">
+  <meta property="og:description" content="AI Developer passionate about building intelligent systems.">
+  <meta property="og:type" content="website">
 
-<title>About | Prabhat Sharma</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link rel="stylesheet" href="css/style.css">
-
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="js/script.js" defer></script>
 </head>
-
 <body>
 
 <nav>
-
-<h2 class="logo">Prabhat</h2>
-
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="projects.html">Projects</a></li>
-<li><a href="blog.html">Blog</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
-
+  <h2 class="logo">Prabhat</h2>
+  <ul id="navMenu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <i class="fas fa-sun"></i>
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
-
-<section>
-
-<h1 class="title">About Me</h1>
-
-<div class="about-container">
-
-<img src="images/about.jpg">
-
-<div>
-
-<p>
-
-Hello! I'm <b>Prabhat Sharma</b>, an AI developer passionate about building intelligent systems using 
-machine learning, deep learning, and natural language processing.
-
-</p>
-
-<p>
-
-My work focuses on developing applications that solve real-world problems such as 
-emotion detection, automated SEO intelligence platforms, and AI-powered data analysis systems.
-
-</p>
-
-<p>
-
-I enjoy exploring how artificial intelligence can improve productivity, automate workflows, 
-and provide meaningful insights from complex data.
-
-</p>
-
+<!-- Hero -->
+<div class="about-hero">
+  <div class="section-label reveal">Who I Am</div>
+  <h1 class="title reveal reveal-delay-1">About <span>Me</span></h1>
+  <p style="color:var(--text-secondary); max-width:580px; font-size:1.05rem;" class="reveal reveal-delay-2">
+    An AI Developer bridging the gap between cutting-edge research and production-ready systems.
+  </p>
 </div>
 
-</div>
+<!-- About Grid -->
+<section style="padding-top: 2rem;">
+  <div class="about-grid">
+    <!-- Image Side -->
+    <div class="about-image-side reveal">
+      <div class="about-img-frame">
+        <div class="about-img-placeholder">🤖</div>
+        <!-- Replace: <img src="images/about.jpg" alt="Prabhat Sharma"> -->
+      </div>
 
+      <div class="about-quick-info">
+        <div class="info-item">
+          <div class="label">Based in</div>
+          <div class="value">India 🇮🇳</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Experience</div>
+          <div class="value">3+ Years</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Focus</div>
+          <div class="value">AI / ML</div>
+        </div>
+        <div class="info-item">
+          <div class="label">Status</div>
+          <div class="value" style="color:var(--accent);">● Available</div>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
+        <a href="contact.html" class="btn" style="flex:1; justify-content:center;">
+          <i class="fas fa-paper-plane"></i> Hire Me
+        </a>
+        <a href="#" class="btn-outline" style="flex:1; justify-content:center;" download>
+          <i class="fas fa-download"></i> Resume
+        </a>
+      </div>
+    </div>
+
+    <!-- Content Side -->
+    <div class="about-content-side">
+      <h2 class="reveal">Passionate about <span style="background:var(--gradient-accent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">intelligent systems</span></h2>
+
+      <p class="reveal reveal-delay-1">
+        Hello! I'm <span class="highlight-text">Prabhat Sharma</span>, an AI Developer passionate about building
+        intelligent systems using machine learning, deep learning, and natural language processing. I thrive at the
+        intersection of research and engineering.
+      </p>
+
+      <p class="reveal reveal-delay-2">
+        My work focuses on developing applications that solve real-world problems —
+        from <span class="highlight-text">emotion detection</span> systems to
+        <span class="highlight-text">automated SEO intelligence platforms</span> and
+        AI-powered data analysis tools.
+      </p>
+
+      <p class="reveal reveal-delay-3">
+        I enjoy exploring how artificial intelligence can improve productivity, automate workflows,
+        and provide meaningful insights from complex, unstructured data. I'm constantly learning,
+        experimenting, and pushing the boundaries of what's possible with AI.
+      </p>
+
+      <!-- Timeline -->
+      <div class="experience-timeline reveal" style="margin-top: 2.5rem;">
+        <h3 style="font-size:1.1rem; margin-bottom:1.5rem; color:var(--text-primary);">Experience</h3>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">💼</div>
+          <div class="timeline-content">
+            <h4>AI Developer</h4>
+            <div class="period">2023 — Present</div>
+            <p>Building production-grade ML pipelines and NLP systems. Developing intelligent automation tools.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">🎓</div>
+          <div class="timeline-content">
+            <h4>ML Research Intern</h4>
+            <div class="period">2022 — 2023</div>
+            <p>Researched transformer architectures for text classification and summarization tasks.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">🚀</div>
+          <div class="timeline-content">
+            <h4>Freelance AI Developer</h4>
+            <div class="period">2021 — 2022</div>
+            <p>Delivered custom ML solutions for clients across healthcare, e-commerce, and marketing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-
+<!-- Expertise Cards -->
 <section>
+  <div class="section-label reveal">Expertise</div>
+  <h2 class="title reveal reveal-delay-1">My <span>Skill Areas</span></h2>
 
-<h2 class="title">My Expertise</h2>
-
-<div class="skills-grid">
-
-<div class="skill-card">
-<h3>Machine Learning</h3>
-<p>Building predictive models and intelligent systems using modern ML techniques.</p>
-</div>
-
-<div class="skill-card">
-<h3>Natural Language Processing</h3>
-<p>Developing applications that understand and process human language.</p>
-</div>
-
-<div class="skill-card">
-<h3>Deep Learning</h3>
-<p>Creating neural network models for image, text, and video analysis.</p>
-</div>
-
-<div class="skill-card">
-<h3>SEO Intelligence</h3>
-<p>Designing AI-powered tools that automate SEO audits and content optimization.</p>
-</div>
-
-</div>
-
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <h3><i class="fas fa-brain" style="margin-right:.5rem"></i>Machine Learning</h3>
+      <p>Building predictive models and intelligent systems using modern ML techniques including supervised, unsupervised, and reinforcement learning.</p>
+    </div>
+    <div class="skill-card reveal reveal-delay-1">
+      <h3><i class="fas fa-language" style="margin-right:.5rem"></i>Natural Language Processing</h3>
+      <p>Developing applications that understand and process human language — from text classification to conversational AI.</p>
+    </div>
+    <div class="skill-card reveal reveal-delay-2">
+      <h3><i class="fas fa-network-wired" style="margin-right:.5rem"></i>Deep Learning</h3>
+      <p>Creating neural network models for image, text, and video analysis using CNN, RNN, Transformer architectures.</p>
+    </div>
+    <div class="skill-card reveal reveal-delay-3">
+      <h3><i class="fas fa-search" style="margin-right:.5rem"></i>SEO Intelligence</h3>
+      <p>Designing AI-powered tools that automate SEO audits, keyword clustering, and content optimization at scale.</p>
+    </div>
+  </div>
 </section>
 
-
+<!-- Technologies -->
 <section>
+  <div class="section-label reveal">Tech Stack</div>
+  <h2 class="title reveal reveal-delay-1">Technologies I <span>Work With</span></h2>
 
-<h2 class="title">Technologies I Work With</h2>
-
-<div class="tech-list">
-
-<span>Python</span>
-<span>TensorFlow</span>
-<span>PyTorch</span>
-<span>Scikit-Learn</span>
-<span>BERT</span>
-<span>OpenCV</span>
-<span>Streamlit</span>
-<span>JavaScript</span>
-
-</div>
-
+  <div class="tech-list reveal reveal-delay-2">
+    <span>Python</span>
+    <span>TensorFlow</span>
+    <span>PyTorch</span>
+    <span>Scikit-Learn</span>
+    <span>BERT</span>
+    <span>Transformers</span>
+    <span>OpenCV</span>
+    <span>Streamlit</span>
+    <span>FastAPI</span>
+    <span>Flask</span>
+    <span>JavaScript</span>
+    <span>Pandas</span>
+    <span>NumPy</span>
+    <span>spaCy</span>
+    <span>NLTK</span>
+    <span>LangChain</span>
+    <span>HuggingFace</span>
+    <span>ONNX</span>
+    <span>Docker</span>
+    <span>Git</span>
+  </div>
 </section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h2 class="logo">Prabhat</h2>
+      <p>Building intelligent systems.</p>
+    </div>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://github.com" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="mailto:prabhat@example.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 <span class="accent">Prabhat Sharma</span>. All rights reserved.</p>
+    <p>Built with <span class="accent">♥</span> and lots of Python</p>
+  </div>
+</footer>
 
 </body>
-
 </html>
