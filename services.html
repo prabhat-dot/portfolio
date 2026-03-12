@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Services | Prabhat Sharma — AI Developer</title>
+  <meta name="description" content="AI development services by Prabhat Sharma — Machine Learning, NLP, Deep Learning, and AI consulting.">
+  <meta property="og:title" content="AI Development Services | Prabhat Sharma">
+  <meta property="og:description" content="Custom AI solutions: ML models, NLP pipelines, computer vision, and AI consulting.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="js/script.js" defer></script>
+  <style>
+    /* ---- SERVICES PAGE SPECIFIC ---- */
+    .services-hero {
+      padding-top: 130px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 5%;
+      padding-right: 5%;
+      padding-bottom: 3rem;
+    }
+
+    /* Main service cards — large featured */
+    .services-featured {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.75rem;
+      margin-bottom: 5rem;
+    }
+
+    .service-card-main {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 2.25rem;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .service-card-main::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gradient-accent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .service-card-main:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .service-card-main:hover::before {
+      opacity: 1;
+    }
+
+    .service-card-main.featured {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, rgba(0,255,200,0.05), rgba(123,108,255,0.03));
+    }
+
+    .service-card-main.featured::before {
+      opacity: 1;
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--gradient-accent);
+      color: #000;
+      padding: 0.3rem 0.75rem;
+      border-radius: 50px;
+      font-weight: 600;
+    }
+
+    .service-icon-wrap {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      background: var(--accent-dim);
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .service-icon-wrap.purple {
+      background: var(--accent-2-dim);
+      color: var(--accent-2);
+    }
+
+    .service-card-main h3 {
+      font-size: 1.2rem;
+      color: var(--text-primary);
+    }
+
+    .service-card-main p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      flex: 1;
+    }
+
+    .service-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .service-list li {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .service-list li::before {
+      content: '→';
+      color: var(--accent);
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .service-price {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--glass-border);
+      padding-top: 1rem;
+      margin-top: auto;
+    }
+
+    .service-price span {
+      color: var(--accent);
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    /* Process steps */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      position: relative;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: var(--glass-border);
+      z-index: 0;
+    }
+
+    .process-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .process-step.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .step-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+      border: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      position: relative;
+    }
+
+    .process-step:first-child .step-circle {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    .process-step h4 {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .process-step p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Mini service tags */
+    .add-ons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .add-on-card {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      transition: var(--transition);
+    }
+
+    .add-on-card:hover {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+      transform: translateY(-3px);
+    }
+
+    .add-on-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .add-on-card h4 {
+      font-size: 0.88rem;
+      margin-bottom: 0.25rem;
+      color: var(--text-primary);
+    }
+
+    .add-on-card p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* CTA Banner */
+    .cta-banner {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 3.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-card);
+      pointer-events: none;
+    }
+
+    .cta-banner h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .cta-banner p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      max-width: 500px;
+      margin: 0 auto 2rem;
+      position: relative;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    @media (max-width: 768px) {
+      .process-steps::before { display: none; }
+      .cta-banner { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <h2 class="logo">Prabhat</h2>
+  <ul id="navMenu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-sun"></i></button>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="services-hero">
+  <div class="section-label reveal">What I Offer</div>
+  <h1 class="title reveal reveal-delay-1">AI Development <span>Services</span></h1>
+  <p style="color:var(--text-secondary); max-width:580px; font-size:1.05rem;" class="reveal reveal-delay-2">
+    From prototype to production — I build intelligent systems tailored to your business needs.
+    End-to-end AI solutions with a focus on real-world impact.
+  </p>
+</div>
+
+<!-- MAIN SERVICES -->
+<section style="padding-top:1rem;">
+
+  <div class="services-featured">
+
+    <!-- ML Consulting -->
+    <div class="service-card-main reveal">
+      <div class="service-icon-wrap"><i class="fas fa-brain"></i></div>
+      <h3>Machine Learning Solutions</h3>
+      <p>Custom ML models built from scratch or fine-tuned for your specific dataset and business requirements. From data prep to deployment.</p>
+      <ul class="service-list">
+        <li>Supervised & unsupervised learning models</li>
+        <li>Feature engineering & data preprocessing</li>
+        <li>Model evaluation, tuning & optimization</li>
+        <li>MLOps & model monitoring setup</li>
+        <li>REST API integration for ML models</li>
+      </ul>
+      <div class="service-price">Starting from <span>$500</span> / project</div>
+      <a href="contact.html" class="btn btn-sm" style="width:fit-content;">Get Started →</a>
+    </div>
+
+    <!-- NLP -->
+    <div class="service-card-main featured reveal reveal-delay-1">
+      <div class="popular-badge">Most Popular</div>
+      <div class="service-icon-wrap purple"><i class="fas fa-language"></i></div>
+      <h3>NLP & Text Intelligence</h3>
+      <p>Build powerful text understanding systems — from sentiment analysis to full conversational AI assistants powered by LLMs.</p>
+      <ul class="service-list">
+        <li>Sentiment & intent classification</li>
+        <li>Named entity recognition (NER)</li>
+        <li>Text summarization & extraction</li>
+        <li>RAG-powered chatbot development</li>
+        <li>Custom LLM fine-tuning (BERT, LLaMA)</li>
+      </ul>
+      <div class="service-price">Starting from <span>$700</span> / project</div>
+      <a href="contact.html" class="btn btn-sm" style="width:fit-content;">Get Started →</a>
+    </div>
+
+    <!-- Computer Vision -->
+    <div class="service-card-main reveal reveal-delay-2">
+      <div class="service-icon-wrap"><i class="fas fa-eye"></i></div>
+      <h3>Computer Vision Systems</h3>
+      <p>Image and video intelligence solutions using deep learning — object detection, face recognition, emotion analysis, and visual QA.</p>
+      <ul class="service-list">
+        <li>Object detection & tracking (YOLO, RCNN)</li>
+        <li>Face recognition & emotion detection</li>
+        <li>Image classification pipelines</li>
+        <li>Video analysis & motion detection</li>
+        <li>Medical image analysis</li>
+      </ul>
+      <div class="service-price">Starting from <span>$600</span> / project</div>
+      <a href="contact.html" class="btn btn-sm" style="width:fit-content;">Get Started →</a>
+    </div>
+
+    <!-- SEO AI -->
+    <div class="service-card-main reveal">
+      <div class="service-icon-wrap purple"><i class="fas fa-search"></i></div>
+      <h3>AI-Powered SEO Tools</h3>
+      <p>Automated SEO intelligence platforms that handle keyword research, content optimization, competitor analysis, and technical audits.</p>
+      <ul class="service-list">
+        <li>Keyword clustering & intent mapping</li>
+        <li>Content gap & competitor analysis</li>
+        <li>Automated technical SEO auditing</li>
+        <li>NLP-driven content scoring</li>
+        <li>Rank tracking & reporting dashboards</li>
+      </ul>
+      <div class="service-price">Starting from <span>$400</span> / project</div>
+      <a href="contact.html" class="btn btn-sm" style="width:fit-content;">Get Started →</a>
+    </div>
+
+    <!-- Data Analysis -->
+    <div class="service-card-main reveal reveal-delay-1">
+      <div class="service-icon-wrap"><i class="fas fa-chart-line"></i></div>
+      <h3>Data Analysis & Insights</h3>
+      <p>Transform raw, complex data into clear visualizations and actionable business insights using Python, Pandas, and interactive dashboards.</p>
+      <ul class="service-list">
+        <li>Exploratory data analysis (EDA)</li>
+        <li>Interactive dashboards (Plotly, Streamlit)</li>
+        <li>Statistical analysis & reporting</li>
+        <li>Predictive analytics models</li>
+        <li>ETL pipeline development</li>
+      </ul>
+      <div class="service-price">Starting from <span>$350</span> / project</div>
+      <a href="contact.html" class="btn btn-sm" style="width:fit-content;">Get Started →</a>
+    </div>
+
+    <!-- AI Consulting -->
+    <div class="service-card-main reveal reveal-delay-2">
+      <div class="service-icon-wrap purple"><i class="fas fa-lightbulb"></i></div>
+      <h3>AI Strategy & Consulting</h3>
+      <p>Not sure where to start with AI? I'll help you identify opportunities, define your AI roadmap, and select the right tools and architectures.</p>
+      <ul class="service-list">
+        <li>AI feasibility assessment</li>
+        <li>Technology stack recommendations</li>
+        <li>Data strategy & governance</li>
+        <li>Proof-of-concept development</li>
+        <li>Team training & workshops</li>
+      </ul>
+      <div class="service-price">Starting from <span>$150</span> / hour</div>
+      <a href="contact.html" class="btn btn-sm" style="width:fit-content;">Book a Call →</a>
+    </div>
+
+  </div>
+
+  <!-- ADD-ONS -->
+  <div class="section-label reveal">Add-Ons</div>
+  <h2 class="title reveal reveal-delay-1" style="margin-bottom:2rem;">Extra <span>Capabilities</span></h2>
+
+  <div class="add-ons-grid">
+    <div class="add-on-card reveal"><span class="add-on-icon">🐳</span>
+      <div><h4>Docker Deployment</h4><p>Containerize your AI app for scalable cloud deployment.</p></div>
+    </div>
+    <div class="add-on-card reveal reveal-delay-1"><span class="add-on-icon">⚡</span>
+      <div><h4>FastAPI Integration</h4><p>Production-ready REST API wrapper for any ML model.</p></div>
+    </div>
+    <div class="add-on-card reveal reveal-delay-2"><span class="add-on-icon">📊</span>
+      <div><h4>Model Monitoring</h4><p>Drift detection & performance tracking dashboards.</p></div>
+    </div>
+    <div class="add-on-card reveal"><span class="add-on-icon">🔒</span>
+      <div><h4>Security Audit</h4><p>Review AI systems for data privacy and adversarial robustness.</p></div>
+    </div>
+    <div class="add-on-card reveal reveal-delay-1"><span class="add-on-icon">📱</span>
+      <div><h4>Streamlit Dashboard</h4><p>Interactive web app for your ML model — no frontend needed.</p></div>
+    </div>
+    <div class="add-on-card reveal reveal-delay-2"><span class="add-on-icon">📖</span>
+      <div><h4>Documentation</h4><p>Full technical docs, API reference, and user guides.</p></div>
+    </div>
+    <div class="add-on-card reveal"><span class="add-on-icon">🔄</span>
+      <div><h4>Ongoing Maintenance</h4><p>Monthly retainer for model updates and bug fixes.</p></div>
+    </div>
+    <div class="add-on-card reveal reveal-delay-1"><span class="add-on-icon">🎓</span>
+      <div><h4>Code Walkthrough</h4><p>1:1 session explaining architecture and design decisions.</p></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <div class="section-label reveal">Process</div>
+  <h2 class="title reveal reveal-delay-1" style="text-align:center; margin-bottom:3.5rem;">How We <span>Work Together</span></h2>
+
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-circle">01</div>
+      <h4>Discovery Call</h4>
+      <p>We discuss your goals, data, timeline, and define clear success metrics for the project.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">02</div>
+      <h4>Proposal & Plan</h4>
+      <p>I deliver a detailed technical proposal with scope, stack, milestones, and pricing.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">03</div>
+      <h4>Build & Iterate</h4>
+      <p>Agile development with weekly updates, demos, and feedback loops throughout.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">04</div>
+      <h4>Deploy & Support</h4>
+      <p>Production deployment with documentation, handover, and optional ongoing support.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="cta-banner reveal">
+    <h2>Ready to build something <span style="background:var(--gradient-accent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">intelligent?</span></h2>
+    <p>Let's talk about your project. First consultation is always free — no strings attached.</p>
+    <div class="cta-buttons">
+      <a href="contact.html" class="btn"><i class="fas fa-paper-plane"></i> Start a Project</a>
+      <a href="projects.html" class="btn-outline"><i class="fas fa-folder-open"></i> View My Work</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><h2 class="logo">Prabhat</h2><p>Building intelligent systems.</p></div>
+    <div class="footer-links">
+      <a href="about.html">About</a><a href="projects.html">Projects</a>
+      <a href="services.html">Services</a><a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://github.com" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="mailto:prabhat@example.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 <span class="accent">Prabhat Sharma</span>. All rights reserved.</p>
+    <p>Built with <span class="accent">♥</span> and lots of Python</p>
+  </div>
+</footer>
+
+<script>
+  // Animate process steps on scroll
+  const steps = document.querySelectorAll('.process-step');
+  const stepObs = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 150);
+      }
+    });
+  }, { threshold: 0.3 });
+  steps.forEach(s => stepObs.observe(s));
+</script>
+
+</body>
+</html>

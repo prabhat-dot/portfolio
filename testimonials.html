@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Testimonials | Prabhat Sharma — AI Developer</title>
+  <meta name="description" content="What clients and collaborators say about working with Prabhat Sharma — AI Developer.">
+  <meta property="og:title" content="Testimonials | Prabhat Sharma">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="js/script.js" defer></script>
+  <style>
+    .testimonials-hero {
+      padding-top: 130px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 5%;
+      padding-right: 5%;
+      padding-bottom: 3rem;
+    }
+
+    /* Stats row */
+    .trust-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 5rem;
+    }
+
+    .trust-stat {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .trust-stat:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .trust-stat-num {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .trust-stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Testimonial cards */
+    .testimonials-masonry {
+      columns: 3;
+      column-gap: 1.5rem;
+    }
+
+    @media (max-width: 1024px) {
+      .testimonials-masonry { columns: 2; }
+    }
+
+    @media (max-width: 640px) {
+      .testimonials-masonry { columns: 1; }
+      .trust-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+      break-inside: avoid;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .testimonial-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: -10px;
+      right: 1rem;
+      font-family: var(--font-display);
+      font-size: 6rem;
+      color: var(--accent);
+      opacity: 0.06;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .testimonial-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .testimonial-card.featured {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, rgba(0,255,200,0.04), rgba(123,108,255,0.04));
+    }
+
+    .stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 1rem;
+      color: #ffd700;
+      font-size: 0.85rem;
+    }
+
+    .testimonial-text {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-text strong {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      border: 1px solid var(--glass-border);
+    }
+
+    .author-name {
+      font-family: var(--font-display);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.15rem;
+    }
+
+    .author-role {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .author-company {
+      color: var(--accent);
+    }
+
+    .author-linkedin {
+      margin-left: auto;
+      color: var(--text-muted);
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .author-linkedin:hover {
+      color: var(--accent-2);
+    }
+
+    /* Project tags on testimonials */
+    .testimonial-project {
+      font-family: var(--font-mono);
+      font-size: 0.67rem;
+      color: var(--accent-2);
+      background: var(--accent-2-dim);
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      border: 1px solid rgba(123,108,255,0.2);
+      display: inline-block;
+      margin-bottom: 0.85rem;
+    }
+
+    /* Write review CTA */
+    .review-cta {
+      background: var(--bg-card);
+      border: 1px dashed var(--glass-border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      text-align: center;
+      margin-top: 3rem;
+      transition: var(--transition);
+    }
+
+    .review-cta:hover {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    .review-cta h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .review-cta p {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Featured quote banner */
+    .featured-quote {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 4rem;
+    }
+
+    .featured-quote::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-card);
+      pointer-events: none;
+    }
+
+    .quote-mark {
+      font-size: 4rem;
+      color: var(--accent);
+      opacity: 0.4;
+      line-height: 1;
+      font-family: var(--font-display);
+      margin-bottom: 0.5rem;
+    }
+
+    .featured-quote blockquote {
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      color: var(--text-primary);
+      line-height: 1.7;
+      font-style: italic;
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+      position: relative;
+    }
+
+    .featured-quote-author {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <h2 class="logo">Prabhat</h2>
+  <ul id="navMenu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="testimonials.html">Testimonials</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-sun"></i></button>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="testimonials-hero">
+  <div class="section-label reveal">Social Proof</div>
+  <h1 class="title reveal reveal-delay-1">What Clients <span>Say</span></h1>
+  <p style="color:var(--text-secondary); max-width:540px; font-size:1.05rem;" class="reveal reveal-delay-2">
+    Don't just take my word for it. Here's what people say about working with me.
+  </p>
+</div>
+
+<section style="padding-top: 1rem;">
+
+  <!-- Trust stats -->
+  <div class="trust-stats">
+    <div class="trust-stat reveal">
+      <div class="trust-stat-num" data-count="20" data-suffix="+">0+</div>
+      <div class="trust-stat-label">Happy Clients</div>
+    </div>
+    <div class="trust-stat reveal reveal-delay-1">
+      <div class="trust-stat-num" data-count="100" data-suffix="%">0%</div>
+      <div class="trust-stat-label">Satisfaction Rate</div>
+    </div>
+    <div class="trust-stat reveal reveal-delay-2">
+      <div class="trust-stat-num" data-count="15" data-suffix="+">0+</div>
+      <div class="trust-stat-label">Projects Delivered</div>
+    </div>
+    <div class="trust-stat reveal reveal-delay-3">
+      <div class="trust-stat-num">5.0 ★</div>
+      <div class="trust-stat-label">Average Rating</div>
+    </div>
+  </div>
+
+  <!-- Featured Quote -->
+  <div class="featured-quote reveal">
+    <div class="quote-mark">"</div>
+    <blockquote>
+      Prabhat delivered an NLP system that exceeded all our expectations. His deep understanding of both the business
+      problem and the technical implementation made all the difference. One of the best AI developers I've worked with.
+    </blockquote>
+    <div class="featured-quote-author">— Rohit Mehta, CTO at DataSphere Technologies</div>
+  </div>
+
+  <!-- Masonry Grid -->
+  <div class="testimonials-masonry">
+
+    <div class="testimonial-card featured">
+      <span class="testimonial-project">Emotion Detection System</span>
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">
+        Prabhat built our emotion detection pipeline from scratch — ingesting facial video, audio, and text simultaneously.
+        The <strong>91% accuracy</strong> it achieved out of the box was stunning. He was thorough, communicative, and
+        genuinely cared about solving the right problem, not just writing code.
+      </p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:var(--accent-dim);">👨‍💼</div>
+        <div>
+          <div class="author-name">Arjun Nair</div>
+          <div class="author-role">Lead Product Manager · <span class="author-company">HealthTech Solutions</span></div>
+        </div>
+        <a href="#" class="author-linkedin"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <span class="testimonial-project">AI SEO Platform</span>
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">
+        We came to Prabhat with a vague idea — automate our entire SEO research workflow. He turned it into a
+        <strong>production system in 6 weeks</strong> that now handles what used to take our team 3 days, in 20 minutes.
+        Outstanding technical and communication skills.
+      </p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:var(--accent-2-dim);">👩‍💻</div>
+        <div>
+          <div class="author-name">Priya Patel</div>
+          <div class="author-role">Head of SEO · <span class="author-company">GrowthEngine Agency</span></div>
+        </div>
+        <a href="#" class="author-linkedin"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <span class="testimonial-project">Text Summarization API</span>
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">
+        We needed a summarizer that ran fast on our budget CPU servers. Prabhat's ONNX-optimized solution
+        was <strong>4x faster than our previous model</strong> with barely any accuracy loss. Incredible work.
+      </p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:var(--accent-dim);">🧑‍🔬</div>
+        <div>
+          <div class="author-name">Dr. Sameer Khan</div>
+          <div class="author-role">CTO · <span class="author-company">LegalAI Labs</span></div>
+        </div>
+        <a href="#" class="author-linkedin"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <span class="testimonial-project">RAG Chatbot</span>
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">
+        Prabhat built a knowledge-base chatbot for our internal teams that actually works reliably in production.
+        His understanding of <strong>RAG architecture and vector databases</strong> is genuinely impressive.
+        Delivered on time, on budget. Would absolutely hire again.
+      </p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:var(--accent-2-dim);">👩‍💼</div>
+        <div>
+          <div class="author-name">Neha Sharma</div>
+          <div class="author-role">Engineering Lead · <span class="author-company">Finova Corp</span></div>
+        </div>
+        <a href="#" class="author-linkedin"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <span class="testimonial-project">Data Analysis Dashboard</span>
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">
+        Our C-suite finally has real-time visibility into the numbers that matter. Prabhat's Streamlit dashboard
+        replaced our weekly manual reports. Clean, fast, and exactly what we needed.
+        <strong>Reduced our reporting effort by 70%.</strong>
+      </p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:var(--accent-dim);">👨‍💼</div>
+        <div>
+          <div class="author-name">Vikram Singh</div>
+          <div class="author-role">COO · <span class="author-company">RetailSmart India</span></div>
+        </div>
+        <a href="#" class="author-linkedin"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">
+        What stands out most is Prabhat's ability to <strong>translate business requirements into technical solutions</strong>
+        with zero friction. He asked the right questions, flagged risks early, and always delivered clean, well-documented code.
+        A true professional.
+      </p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:var(--accent-2-dim);">👩‍🎓</div>
+        <div>
+          <div class="author-name">Ananya Bose</div>
+          <div class="author-role">Research Scientist · <span class="author-company">IIT Bangalore</span></div>
+        </div>
+        <a href="#" class="author-linkedin"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <span class="testimonial-project">Sentiment Analysis Tool</span>
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">
+        We integrated Prabhat's sentiment analysis API into our customer support platform and saw
+        <strong>immediate impact on ticket routing accuracy</strong>. Highly technical, great communicator.
+        I recommend him without hesitation.
+      </p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:var(--accent-dim);">🧑‍💼</div>
+        <div>
+          <div class="author-name">Karan Joshi</div>
+          <div class="author-role">Product Director · <span class="author-company">SupportHub</span></div>
+        </div>
+        <a href="#" class="author-linkedin"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <span class="testimonial-project">Computer Vision Pipeline</span>
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">
+        Prabhat designed a real-time defect detection system for our manufacturing line using YOLO.
+        It catches <strong>98% of defects</strong> that human inspectors miss. Exceptional work — ROI was clear
+        within the first month.
+      </p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:var(--accent-2-dim);">🏭</div>
+        <div>
+          <div class="author-name">Suresh Reddy</div>
+          <div class="author-role">Operations Director · <span class="author-company">ManufactAI</span></div>
+        </div>
+        <a href="#" class="author-linkedin"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Write a Review CTA -->
+  <div class="review-cta reveal">
+    <h3>Worked with me? 🤝</h3>
+    <p>I'd love to hear your feedback. Your testimonial helps others make informed decisions.</p>
+    <a href="contact.html" class="btn"><i class="fas fa-pen"></i> Leave a Review</a>
+  </div>
+
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><h2 class="logo">Prabhat</h2><p>Building intelligent systems.</p></div>
+    <div class="footer-links">
+      <a href="about.html">About</a><a href="services.html">Services</a>
+      <a href="testimonials.html">Testimonials</a><a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://github.com" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="mailto:prabhat@example.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 <span class="accent">Prabhat Sharma</span>. All rights reserved.</p>
+    <p>Built with <span class="accent">♥</span> and lots of Python</p>
+  </div>
+</footer>
+
+<script>
+  const cards = document.querySelectorAll('.testimonial-card');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  cards.forEach(c => obs.observe(c));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Open Source | Prabhat Sharma — AI Developer</title>
+  <meta name="description" content="Open source contributions and GitHub activity by Prabhat Sharma — AI packages, tools, and community contributions.">
+  <meta property="og:title" content="Open Source | Prabhat Sharma">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="js/script.js" defer></script>
+  <style>
+    .oss-hero {
+      padding-top: 130px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 5%;
+      padding-right: 5%;
+      padding-bottom: 3rem;
+    }
+
+    /* GitHub contribution heatmap */
+    .contrib-heatmap {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 4rem;
+      overflow-x: auto;
+    }
+
+    .heatmap-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .heatmap-title {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .heatmap-total {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--accent);
+    }
+
+    .heatmap-grid {
+      display: flex;
+      gap: 3px;
+    }
+
+    .heatmap-col {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .heatmap-cell {
+      width: 11px;
+      height: 11px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.04);
+      transition: transform 0.2s ease;
+    }
+
+    .heatmap-cell:hover {
+      transform: scale(1.4);
+    }
+
+    .heatmap-cell.l1 { background: rgba(0,255,200,0.2); }
+    .heatmap-cell.l2 { background: rgba(0,255,200,0.4); }
+    .heatmap-cell.l3 { background: rgba(0,255,200,0.65); }
+    .heatmap-cell.l4 { background: rgba(0,255,200,0.9); }
+
+    .heatmap-legend {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 0.75rem;
+      justify-content: flex-end;
+    }
+
+    .heatmap-legend span {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    /* GitHub stats cards */
+    .github-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 4rem;
+    }
+
+    .github-stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .github-stat-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .github-stat-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--accent);
+    }
+
+    .github-stat-num {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 800;
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .github-stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.25rem;
+    }
+
+    /* OSS repo cards */
+    .repos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .repo-card {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .repo-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .repo-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .repo-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .repo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      background: var(--accent-dim);
+      color: var(--accent);
+    }
+
+    .repo-icon.purple {
+      background: var(--accent-2-dim);
+      color: var(--accent-2);
+    }
+
+    .repo-name {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+      transition: var(--transition);
+    }
+
+    .repo-card:hover .repo-name {
+      color: var(--accent);
+    }
+
+    .repo-org {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .repo-badge {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 50px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      border: 1px solid rgba(0,255,200,0.2);
+      white-space: nowrap;
+    }
+
+    .repo-badge.owner {
+      background: var(--accent-2-dim);
+      color: var(--accent-2);
+      border-color: rgba(123,108,255,0.2);
+    }
+
+    .repo-desc {
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .repo-meta {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .repo-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .repo-meta-item i {
+      font-size: 0.75rem;
+    }
+
+    .repo-lang-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: inline-block;
+    }
+
+    .repo-lang-dot.purple { background: var(--accent-2); }
+
+    .repo-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .repo-tags {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .repo-tag {
+      font-family: var(--font-mono);
+      font-size: 0.63rem;
+      padding: 0.15rem 0.5rem;
+      background: rgba(255,255,255,0.05);
+      color: var(--text-muted);
+      border-radius: 50px;
+      border: 1px solid var(--glass-border);
+    }
+
+    /* Contributions timeline */
+    .contrib-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contrib-item {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      transition: var(--transition);
+      opacity: 0;
+      transform: translateX(-15px);
+    }
+
+    .contrib-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .contrib-item:hover {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    .contrib-type {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      background: var(--accent-dim);
+      color: var(--accent);
+    }
+
+    .contrib-type.pr { background: var(--accent-2-dim); color: var(--accent-2); }
+    .contrib-type.review { background: rgba(255,200,0,0.1); color: #ffd700; }
+
+    .contrib-body {
+      flex: 1;
+    }
+
+    .contrib-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .contrib-meta {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .contrib-meta .repo-ref {
+      color: var(--accent);
+    }
+
+    .contrib-status {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 50px;
+      flex-shrink: 0;
+    }
+
+    .contrib-status.merged {
+      background: rgba(130, 80, 255, 0.15);
+      color: var(--accent-2);
+      border: 1px solid rgba(123,108,255,0.2);
+    }
+
+    .contrib-status.open {
+      background: var(--accent-dim);
+      color: var(--accent);
+      border: 1px solid rgba(0,255,200,0.2);
+    }
+
+    .contrib-status.closed {
+      background: rgba(255,80,80,0.1);
+      color: #ff8080;
+      border: 1px solid rgba(255,80,80,0.2);
+    }
+
+    @media (max-width: 640px) {
+      .repos-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <h2 class="logo">Prabhat</h2>
+  <ul id="navMenu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="opensource.html">Open Source</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-sun"></i></button>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="oss-hero">
+  <div class="section-label reveal">Community</div>
+  <h1 class="title reveal reveal-delay-1">Open Source <span>Contributions</span></h1>
+  <p style="color:var(--text-secondary); max-width:560px; font-size:1.05rem;" class="reveal reveal-delay-2">
+    Giving back to the community that built the tools I use every day. Packages, PRs, issues, and documentation.
+  </p>
+</div>
+
+<section style="padding-top: 1rem;">
+
+  <!-- GitHub Stats -->
+  <div class="github-stats">
+    <div class="github-stat-card reveal">
+      <div class="github-stat-icon"><i class="fab fa-github"></i></div>
+      <div class="github-stat-num" data-count="1200" data-suffix="+">0+</div>
+      <div class="github-stat-label">Contributions / yr</div>
+    </div>
+    <div class="github-stat-card reveal reveal-delay-1">
+      <div class="github-stat-icon"><i class="fas fa-star"></i></div>
+      <div class="github-stat-num" data-count="340" data-suffix="+">0+</div>
+      <div class="github-stat-label">GitHub Stars</div>
+    </div>
+    <div class="github-stat-card reveal reveal-delay-2">
+      <div class="github-stat-icon"><i class="fas fa-code-branch"></i></div>
+      <div class="github-stat-num" data-count="48" data-suffix="+">0+</div>
+      <div class="github-stat-label">Pull Requests</div>
+    </div>
+    <div class="github-stat-card reveal reveal-delay-3">
+      <div class="github-stat-icon"><i class="fas fa-box-open"></i></div>
+      <div class="github-stat-num" data-count="6">0</div>
+      <div class="github-stat-label">Own Packages</div>
+    </div>
+    <div class="github-stat-card reveal">
+      <div class="github-stat-icon"><i class="fas fa-users"></i></div>
+      <div class="github-stat-num" data-count="120" data-suffix="+">0+</div>
+      <div class="github-stat-label">Followers</div>
+    </div>
+  </div>
+
+  <!-- Contribution Heatmap -->
+  <div class="contrib-heatmap reveal">
+    <div class="heatmap-header">
+      <span class="heatmap-title">Contribution Activity — 2025</span>
+      <span class="heatmap-total">1,247 contributions this year</span>
+    </div>
+    <div class="heatmap-grid" id="heatmap"></div>
+    <div class="heatmap-legend">
+      <span>Less</span>
+      <div class="heatmap-cell"></div>
+      <div class="heatmap-cell l1"></div>
+      <div class="heatmap-cell l2"></div>
+      <div class="heatmap-cell l3"></div>
+      <div class="heatmap-cell l4"></div>
+      <span>More</span>
+    </div>
+  </div>
+
+  <!-- Own Packages -->
+  <div class="section-label reveal">Own Packages</div>
+  <h2 class="title reveal reveal-delay-1" style="margin-bottom:2rem;">Open Source <span>Projects</span></h2>
+
+  <div class="repos-grid">
+
+    <div class="repo-card">
+      <div class="repo-header">
+        <div style="display:flex;gap:.75rem;align-items:flex-start;">
+          <div class="repo-icon"><i class="fas fa-bolt"></i></div>
+          <div>
+            <div class="repo-name">nlpfast</div>
+            <div class="repo-org">prabhat-sharma / nlpfast</div>
+          </div>
+        </div>
+        <span class="repo-badge owner">Owner</span>
+      </div>
+      <p class="repo-desc">
+        A lightweight Python library for fast NLP inference on CPU-constrained environments.
+        ONNX-optimized BERT variants with a simple scikit-learn style API.
+      </p>
+      <div class="repo-meta">
+        <span class="repo-meta-item"><span class="repo-lang-dot"></span>Python</span>
+        <span class="repo-meta-item"><i class="fas fa-star"></i> 142</span>
+        <span class="repo-meta-item"><i class="fas fa-code-branch"></i> 31</span>
+        <span class="repo-meta-item"><i class="fas fa-eye"></i> 280</span>
+      </div>
+      <div class="repo-footer">
+        <div class="repo-tags">
+          <span class="repo-tag">nlp</span><span class="repo-tag">onnx</span><span class="repo-tag">bert</span>
+        </div>
+        <a href="https://github.com" target="_blank" class="btn btn-sm btn-ghost"><i class="fab fa-github"></i> View</a>
+      </div>
+    </div>
+
+    <div class="repo-card">
+      <div class="repo-header">
+        <div style="display:flex;gap:.75rem;align-items:flex-start;">
+          <div class="repo-icon purple"><i class="fas fa-face-smile"></i></div>
+          <div>
+            <div class="repo-name">emotionkit</div>
+            <div class="repo-org">prabhat-sharma / emotionkit</div>
+          </div>
+        </div>
+        <span class="repo-badge owner">Owner</span>
+      </div>
+      <p class="repo-desc">
+        Plug-and-play emotion detection from text, image, and audio. Built on PyTorch with pre-trained
+        multimodal models. One-line inference API with optional Streamlit demo.
+      </p>
+      <div class="repo-meta">
+        <span class="repo-meta-item"><span class="repo-lang-dot"></span>Python</span>
+        <span class="repo-meta-item"><i class="fas fa-star"></i> 98</span>
+        <span class="repo-meta-item"><i class="fas fa-code-branch"></i> 19</span>
+        <span class="repo-meta-item"><i class="fas fa-eye"></i> 195</span>
+      </div>
+      <div class="repo-footer">
+        <div class="repo-tags">
+          <span class="repo-tag">emotion</span><span class="repo-tag">pytorch</span><span class="repo-tag">cv</span>
+        </div>
+        <a href="https://github.com" target="_blank" class="btn btn-sm btn-ghost"><i class="fab fa-github"></i> View</a>
+      </div>
+    </div>
+
+    <div class="repo-card">
+      <div class="repo-header">
+        <div style="display:flex;gap:.75rem;align-items:flex-start;">
+          <div class="repo-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+          <div>
+            <div class="repo-name">seoauto</div>
+            <div class="repo-org">prabhat-sharma / seoauto</div>
+          </div>
+        </div>
+        <span class="repo-badge owner">Owner</span>
+      </div>
+      <p class="repo-desc">
+        Python toolkit for automated SEO analysis — keyword clustering, SERP scraping, content gap
+        detection, and competitor benchmarking. CLI + Python API.
+      </p>
+      <div class="repo-meta">
+        <span class="repo-meta-item"><span class="repo-lang-dot"></span>Python</span>
+        <span class="repo-meta-item"><i class="fas fa-star"></i> 67</span>
+        <span class="repo-meta-item"><i class="fas fa-code-branch"></i> 14</span>
+        <span class="repo-meta-item"><i class="fas fa-eye"></i> 130</span>
+      </div>
+      <div class="repo-footer">
+        <div class="repo-tags">
+          <span class="repo-tag">seo</span><span class="repo-tag">nlp</span><span class="repo-tag">cli</span>
+        </div>
+        <a href="https://github.com" target="_blank" class="btn btn-sm btn-ghost"><i class="fab fa-github"></i> View</a>
+      </div>
+    </div>
+
+    <div class="repo-card">
+      <div class="repo-header">
+        <div style="display:flex;gap:.75rem;align-items:flex-start;">
+          <div class="repo-icon purple"><i class="fas fa-compress"></i></div>
+          <div>
+            <div class="repo-name">summarize-lite</div>
+            <div class="repo-org">prabhat-sharma / summarize-lite</div>
+          </div>
+        </div>
+        <span class="repo-badge owner">Owner</span>
+      </div>
+      <p class="repo-desc">
+        CPU-first abstractive summarization using quantized T5. Processes 10k token documents in under
+        2 seconds on budget hardware. Zero GPU required.
+      </p>
+      <div class="repo-meta">
+        <span class="repo-meta-item"><span class="repo-lang-dot"></span>Python</span>
+        <span class="repo-meta-item"><i class="fas fa-star"></i> 33</span>
+        <span class="repo-meta-item"><i class="fas fa-code-branch"></i> 8</span>
+        <span class="repo-meta-item"><i class="fas fa-eye"></i> 72</span>
+      </div>
+      <div class="repo-footer">
+        <div class="repo-tags">
+          <span class="repo-tag">t5</span><span class="repo-tag">onnx</span><span class="repo-tag">summarization</span>
+        </div>
+        <a href="https://github.com" target="_blank" class="btn btn-sm btn-ghost"><i class="fab fa-github"></i> View</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Community Contributions -->
+  <div class="section-label reveal">Community</div>
+  <h2 class="title reveal reveal-delay-1" style="margin-bottom:2rem;">Upstream <span>Contributions</span></h2>
+
+  <div class="contrib-list">
+    <div class="contrib-item">
+      <div class="contrib-type pr"><i class="fas fa-code-merge"></i></div>
+      <div class="contrib-body">
+        <div class="contrib-title">Add ONNX export support for custom BERT classifiers</div>
+        <div class="contrib-meta">
+          <span class="repo-ref">huggingface/transformers</span>
+          <span>Mar 2025</span>
+          <span>+340 / −12 lines</span>
+        </div>
+      </div>
+      <span class="contrib-status merged">Merged</span>
+    </div>
+
+    <div class="contrib-item">
+      <div class="contrib-type"><i class="fas fa-bug"></i></div>
+      <div class="contrib-body">
+        <div class="contrib-title">Fix memory leak in DataLoader when using custom samplers</div>
+        <div class="contrib-meta">
+          <span class="repo-ref">pytorch/pytorch</span>
+          <span>Feb 2025</span>
+          <span>+18 / −5 lines</span>
+        </div>
+      </div>
+      <span class="contrib-status merged">Merged</span>
+    </div>
+
+    <div class="contrib-item">
+      <div class="contrib-type pr"><i class="fas fa-code-merge"></i></div>
+      <div class="contrib-body">
+        <div class="contrib-title">Add Hindi language support to multilingual sentiment pipeline</div>
+        <div class="contrib-meta">
+          <span class="repo-ref">flairNLP/flair</span>
+          <span>Jan 2025</span>
+          <span>+210 / −4 lines</span>
+        </div>
+      </div>
+      <span class="contrib-status merged">Merged</span>
+    </div>
+
+    <div class="contrib-item">
+      <div class="contrib-type review"><i class="fas fa-eye"></i></div>
+      <div class="contrib-body">
+        <div class="contrib-title">Review: Implement streaming inference for LLM API endpoint</div>
+        <div class="contrib-meta">
+          <span class="repo-ref">langchain-ai/langchain</span>
+          <span>Dec 2024</span>
+        </div>
+      </div>
+      <span class="contrib-status open">Reviewed</span>
+    </div>
+
+    <div class="contrib-item">
+      <div class="contrib-type"><i class="fas fa-book"></i></div>
+      <div class="contrib-body">
+        <div class="contrib-title">Improve documentation for custom tokenizer training pipeline</div>
+        <div class="contrib-meta">
+          <span class="repo-ref">explosion/spaCy</span>
+          <span>Nov 2024</span>
+          <span>+85 lines</span>
+        </div>
+      </div>
+      <span class="contrib-status merged">Merged</span>
+    </div>
+
+    <div class="contrib-item">
+      <div class="contrib-type pr"><i class="fas fa-code-merge"></i></div>
+      <div class="contrib-body">
+        <div class="contrib-title">Add batch prediction support to Streamlit ML template</div>
+        <div class="contrib-meta">
+          <span class="repo-ref">streamlit/streamlit</span>
+          <span>Oct 2024</span>
+          <span>+67 / −3 lines</span>
+        </div>
+      </div>
+      <span class="contrib-status merged">Merged</span>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:3rem;" class="reveal">
+    <a href="https://github.com" target="_blank" class="btn">
+      <i class="fab fa-github"></i> View GitHub Profile
+    </a>
+  </div>
+
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><h2 class="logo">Prabhat</h2><p>Building intelligent systems.</p></div>
+    <div class="footer-links">
+      <a href="projects.html">Projects</a><a href="opensource.html">Open Source</a>
+      <a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://github.com" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="mailto:prabhat@example.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 <span class="accent">Prabhat Sharma</span>. All rights reserved.</p>
+    <p>Built with <span class="accent">♥</span> and lots of Python</p>
+  </div>
+</footer>
+
+<script>
+  // Generate random heatmap
+  const heatmap = document.getElementById('heatmap');
+  if (heatmap) {
+    const levels = ['', 'l1', 'l2', 'l3', 'l4'];
+    const weights = [30, 25, 20, 15, 10]; // probability weights
+    for (let week = 0; week < 52; week++) {
+      const col = document.createElement('div');
+      col.className = 'heatmap-col';
+      for (let day = 0; day < 7; day++) {
+        const cell = document.createElement('div');
+        const rand = Math.random() * 100;
+        let level = '';
+        if (rand > 70) level = 'l1';
+        if (rand > 80) level = 'l2';
+        if (rand > 90) level = 'l3';
+        if (rand > 96) level = 'l4';
+        // Make recent weeks more active
+        if (week > 45 && rand > 50) level = level || 'l2';
+        cell.className = 'heatmap-cell ' + level;
+        col.appendChild(cell);
+      }
+      heatmap.appendChild(col);
+    }
+  }
+
+  // Animate repo and contrib cards
+  const cards = document.querySelectorAll('.repo-card, .contrib-item');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  cards.forEach(c => obs.observe(c));
+</script>
+
+</body>
+</html>

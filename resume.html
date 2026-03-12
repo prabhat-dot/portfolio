@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resume | Prabhat Sharma — AI Developer</title>
+  <meta name="description" content="Resume and CV of Prabhat Sharma — AI Developer specializing in ML, NLP and Deep Learning.">
+  <meta property="og:title" content="Resume | Prabhat Sharma">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="js/script.js" defer></script>
+  <style>
+    .resume-hero {
+      padding-top: 130px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 5%;
+      padding-right: 5%;
+      padding-bottom: 2rem;
+    }
+
+    .resume-layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    /* --- Sidebar --- */
+    .resume-sidebar {
+      position: sticky;
+      top: 90px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .sidebar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+
+    .sidebar-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-dim), var(--accent-2-dim));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      border: 2px solid var(--glass-border);
+    }
+
+    .sidebar-name {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .sidebar-role {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.25rem;
+    }
+
+    .sidebar-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.6rem;
+    }
+
+    .sidebar-contact-item i {
+      color: var(--accent);
+      width: 14px;
+      text-align: center;
+    }
+
+    .sidebar-section-title {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .lang-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+
+    .lang-name {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .lang-dots {
+      display: flex;
+      gap: 3px;
+    }
+
+    .lang-dots span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--glass-border);
+    }
+
+    .lang-dots span.filled {
+      background: var(--accent);
+    }
+
+    .interest-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .interest-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 0.25rem 0.6rem;
+      background: var(--accent-dim);
+      color: var(--accent);
+      border-radius: 50px;
+      border: 1px solid rgba(0,255,200,0.2);
+    }
+
+    /* --- Main content --- */
+    .resume-main {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .resume-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .resume-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .resume-section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .resume-section-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      background: var(--accent-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .resume-section-icon.purple {
+      background: var(--accent-2-dim);
+      color: var(--accent-2);
+    }
+
+    .resume-section-header h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* Experience / Education items */
+    .exp-item {
+      padding: 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      transition: var(--transition);
+      position: relative;
+      padding-left: 1.75rem;
+    }
+
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      border-radius: 3px 0 0 3px;
+      background: var(--gradient-accent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .exp-item:hover {
+      border-color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    .exp-item:hover::before {
+      opacity: 1;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .exp-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .exp-period {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 0.2rem 0.7rem;
+      border-radius: 50px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .exp-company {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .exp-company::before {
+      content: '@ ';
+      color: var(--accent);
+    }
+
+    .exp-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 0.85rem;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .exp-bullets li {
+      font-size: 0.83rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      line-height: 1.6;
+    }
+
+    .exp-bullets li::before {
+      content: '▸';
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+    }
+
+    .exp-tag {
+      font-family: var(--font-mono);
+      font-size: 0.67rem;
+      padding: 0.2rem 0.6rem;
+      background: var(--accent-2-dim);
+      color: var(--accent-2);
+      border-radius: 50px;
+      border: 1px solid rgba(123,108,255,0.2);
+    }
+
+    /* Skills grid in resume */
+    .resume-skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .resume-skill-item {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem;
+      transition: var(--transition);
+    }
+
+    .resume-skill-item:hover {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    .resume-skill-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .resume-skill-bar {
+      height: 3px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .resume-skill-bar-fill {
+      height: 100%;
+      background: var(--gradient-accent);
+      border-radius: 3px;
+      width: 0;
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .resume-skill-level {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+
+    /* Certs */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .cert-card {
+      background: var(--bg-card);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: var(--transition);
+    }
+
+    .cert-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .cert-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-sm);
+      background: var(--accent-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .cert-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+      line-height: 1.3;
+    }
+
+    .cert-issuer {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--accent);
+      margin-bottom: 0.2rem;
+    }
+
+    .cert-date {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    /* Download button floating */
+    .download-fab {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.5rem;
+      background: var(--gradient-accent);
+      color: #000;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 30px var(--accent-glow);
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .download-fab:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px var(--accent-glow);
+    }
+
+    @media (max-width: 900px) {
+      .resume-layout { grid-template-columns: 1fr; }
+      .resume-sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <h2 class="logo">Prabhat</h2>
+  <ul id="navMenu">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-sun"></i></button>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="resume-hero">
+  <div class="section-label reveal">Curriculum Vitae</div>
+  <h1 class="title reveal reveal-delay-1">My <span>Resume</span></h1>
+  <p style="color:var(--text-secondary); font-size:1rem;" class="reveal reveal-delay-2">
+    3+ years of building intelligent systems. Here's the full story.
+  </p>
+</div>
+
+<section style="padding-top: 1rem;">
+  <div class="resume-layout">
+
+    <!-- SIDEBAR -->
+    <div class="resume-sidebar reveal">
+
+      <div class="sidebar-card">
+        <div class="sidebar-avatar">🤖</div>
+        <div class="sidebar-name">Prabhat Sharma</div>
+        <div class="sidebar-role">AI Developer & ML Engineer</div>
+        <div class="sidebar-contact-item"><i class="fas fa-envelope"></i> prabhat@example.com</div>
+        <div class="sidebar-contact-item"><i class="fab fa-github"></i> github.com/prabhat-sharma</div>
+        <div class="sidebar-contact-item"><i class="fab fa-linkedin"></i> linkedin.com/in/prabhat</div>
+        <div class="sidebar-contact-item"><i class="fas fa-map-marker-alt"></i> India</div>
+        <div class="sidebar-contact-item"><i class="fas fa-globe"></i> prabhat.dev</div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-section-title">Languages</div>
+        <div class="lang-item">
+          <span class="lang-name">English</span>
+          <div class="lang-dots">
+            <span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span>
+          </div>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name">Hindi</span>
+          <div class="lang-dots">
+            <span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span>
+          </div>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name">Spanish</span>
+          <div class="lang-dots">
+            <span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-section-title">Interests</div>
+        <div class="interest-tags">
+          <span class="interest-tag">AI Research</span>
+          <span class="interest-tag">Open Source</span>
+          <span class="interest-tag">Tech Writing</span>
+          <span class="interest-tag">Mathematics</span>
+          <span class="interest-tag">Philosophy</span>
+          <span class="interest-tag">Hiking</span>
+        </div>
+      </div>
+
+      <a href="#" download class="btn" style="width:100%; justify-content:center;">
+        <i class="fas fa-download"></i> Download PDF
+      </a>
+
+    </div>
+
+    <!-- MAIN -->
+    <div class="resume-main">
+
+      <!-- Summary -->
+      <div class="resume-section">
+        <div class="resume-section-header">
+          <div class="resume-section-icon"><i class="fas fa-user"></i></div>
+          <h2>Professional Summary</h2>
+        </div>
+        <div style="background:var(--bg-card); border:1px solid var(--glass-border); border-radius:var(--radius); padding:1.5rem;">
+          <p style="color:var(--text-secondary); line-height:1.9; font-size:0.93rem;">
+            AI Developer with 3+ years of experience building production-grade machine learning systems, NLP pipelines,
+            and computer vision solutions. Passionate about transforming complex data into intelligent applications that
+            create measurable real-world impact. Strong background in Python, deep learning frameworks, and deploying
+            scalable AI APIs. Seeking challenging roles where I can push the boundaries of applied AI.
+          </p>
+        </div>
+      </div>
+
+      <!-- Experience -->
+      <div class="resume-section">
+        <div class="resume-section-header">
+          <div class="resume-section-icon purple"><i class="fas fa-briefcase"></i></div>
+          <h2>Work Experience</h2>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-title">AI Developer (Freelance)</div>
+            <div class="exp-period">Jan 2023 — Present</div>
+          </div>
+          <div class="exp-company">Self-Employed</div>
+          <ul class="exp-bullets">
+            <li>Built and deployed 15+ custom ML/NLP solutions for clients across healthcare, e-commerce, and marketing sectors.</li>
+            <li>Designed a multimodal emotion detection system achieving 91% accuracy using ensemble CNN + BERT architecture.</li>
+            <li>Developed an AI-powered SEO platform automating keyword clustering and content gap analysis, reducing manual effort by 80%.</li>
+            <li>Created CPU-optimized NLP models using ONNX quantization, achieving near-GPU inference performance.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">PyTorch</span><span class="exp-tag">TensorFlow</span>
+            <span class="exp-tag">FastAPI</span><span class="exp-tag">Docker</span><span class="exp-tag">Streamlit</span>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-title">ML Research Intern</div>
+            <div class="exp-period">Jun 2022 — Dec 2022</div>
+          </div>
+          <div class="exp-company">AI Research Lab</div>
+          <ul class="exp-bullets">
+            <li>Researched transformer architectures for domain-specific text classification and abstractive summarization.</li>
+            <li>Fine-tuned BERT and T5 models on custom datasets, improving F1-score by 12% over baseline.</li>
+            <li>Contributed to 2 research papers on low-resource NLP and efficient transformer inference.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">BERT</span><span class="exp-tag">HuggingFace</span>
+            <span class="exp-tag">Python</span><span class="exp-tag">Research</span>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-title">Data Science Intern</div>
+            <div class="exp-period">Jan 2022 — May 2022</div>
+          </div>
+          <div class="exp-company">TechStartup Pvt. Ltd.</div>
+          <ul class="exp-bullets">
+            <li>Developed customer churn prediction model with 87% accuracy, directly informing retention campaigns.</li>
+            <li>Built interactive Plotly dashboards for C-suite data visibility, reducing reporting time by 60%.</li>
+          </ul>
+          <div class="exp-tags">
+            <span class="exp-tag">Pandas</span><span class="exp-tag">Scikit-Learn</span>
+            <span class="exp-tag">Plotly</span><span class="exp-tag">SQL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="resume-section">
+        <div class="resume-section-header">
+          <div class="resume-section-icon"><i class="fas fa-graduation-cap"></i></div>
+          <h2>Education</h2>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-title">B.Tech — Computer Science & Engineering</div>
+            <div class="exp-period">2018 — 2022</div>
+          </div>
+          <div class="exp-company">State University of Technology</div>
+          <p class="exp-desc">Specialized in Artificial Intelligence and Machine Learning. Graduated with Distinction — GPA 8.9/10. Final thesis: "Efficient Transformer Architectures for Low-Resource NLP Tasks."</p>
+          <div class="exp-tags">
+            <span class="exp-tag">AI/ML</span><span class="exp-tag">Data Structures</span>
+            <span class="exp-tag">Linear Algebra</span><span class="exp-tag">Statistics</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div class="resume-section">
+        <div class="resume-section-header">
+          <div class="resume-section-icon purple"><i class="fas fa-code"></i></div>
+          <h2>Technical Skills</h2>
+        </div>
+
+        <div class="resume-skills-grid">
+          <div class="resume-skill-item">
+            <div class="resume-skill-name">Python</div>
+            <div class="resume-skill-bar"><div class="resume-skill-bar-fill" data-width="95"></div></div>
+            <div class="resume-skill-level">Expert</div>
+          </div>
+          <div class="resume-skill-item">
+            <div class="resume-skill-name">PyTorch</div>
+            <div class="resume-skill-bar"><div class="resume-skill-bar-fill" data-width="85"></div></div>
+            <div class="resume-skill-level">Advanced</div>
+          </div>
+          <div class="resume-skill-item">
+            <div class="resume-skill-name">TensorFlow</div>
+            <div class="resume-skill-bar"><div class="resume-skill-bar-fill" data-width="88"></div></div>
+            <div class="resume-skill-level">Advanced</div>
+          </div>
+          <div class="resume-skill-item">
+            <div class="resume-skill-name">Scikit-Learn</div>
+            <div class="resume-skill-bar"><div class="resume-skill-bar-fill" data-width="92"></div></div>
+            <div class="resume-skill-level">Expert</div>
+          </div>
+          <div class="resume-skill-item">
+            <div class="resume-skill-name">BERT / NLP</div>
+            <div class="resume-skill-bar"><div class="resume-skill-bar-fill" data-width="87"></div></div>
+            <div class="resume-skill-level">Advanced</div>
+          </div>
+          <div class="resume-skill-item">
+            <div class="resume-skill-name">OpenCV</div>
+            <div class="resume-skill-bar"><div class="resume-skill-bar-fill" data-width="80"></div></div>
+            <div class="resume-skill-level">Advanced</div>
+          </div>
+          <div class="resume-skill-item">
+            <div class="resume-skill-name">FastAPI</div>
+            <div class="resume-skill-bar"><div class="resume-skill-bar-fill" data-width="82"></div></div>
+            <div class="resume-skill-level">Advanced</div>
+          </div>
+          <div class="resume-skill-item">
+            <div class="resume-skill-name">Docker</div>
+            <div class="resume-skill-bar"><div class="resume-skill-bar-fill" data-width="74"></div></div>
+            <div class="resume-skill-level">Proficient</div>
+          </div>
+          <div class="resume-skill-item">
+            <div class="resume-skill-name">SQL</div>
+            <div class="resume-skill-bar"><div class="resume-skill-bar-fill" data-width="78"></div></div>
+            <div class="resume-skill-level">Proficient</div>
+          </div>
+          <div class="resume-skill-item">
+            <div class="resume-skill-name">JavaScript</div>
+            <div class="resume-skill-bar"><div class="resume-skill-bar-fill" data-width="70"></div></div>
+            <div class="resume-skill-level">Proficient</div>
+          </div>
+          <div class="resume-skill-item">
+            <div class="resume-skill-name">Git / GitHub</div>
+            <div class="resume-skill-bar"><div class="resume-skill-bar-fill" data-width="90"></div></div>
+            <div class="resume-skill-level">Expert</div>
+          </div>
+          <div class="resume-skill-item">
+            <div class="resume-skill-name">LangChain</div>
+            <div class="resume-skill-bar"><div class="resume-skill-bar-fill" data-width="78"></div></div>
+            <div class="resume-skill-level">Proficient</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certifications -->
+      <div class="resume-section">
+        <div class="resume-section-header">
+          <div class="resume-section-icon"><i class="fas fa-certificate"></i></div>
+          <h2>Certifications</h2>
+        </div>
+        <div class="cert-grid">
+          <div class="cert-card">
+            <div class="cert-icon">🧠</div>
+            <div>
+              <div class="cert-name">Deep Learning Specialization</div>
+              <div class="cert-issuer">Coursera / DeepLearning.AI</div>
+              <div class="cert-date">2023</div>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon">🐍</div>
+            <div>
+              <div class="cert-name">Python for Data Science & AI</div>
+              <div class="cert-issuer">IBM / Coursera</div>
+              <div class="cert-date">2022</div>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon">🤗</div>
+            <div>
+              <div class="cert-name">NLP with HuggingFace</div>
+              <div class="cert-issuer">HuggingFace</div>
+              <div class="cert-date">2023</div>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon">☁️</div>
+            <div>
+              <div class="cert-name">AWS Machine Learning Specialty</div>
+              <div class="cert-issuer">Amazon Web Services</div>
+              <div class="cert-date">2024</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end resume-main -->
+  </div><!-- end resume-layout -->
+</section>
+
+<!-- Download FAB -->
+<a href="#" download class="download-fab">
+  <i class="fas fa-download"></i> Download Resume
+</a>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><h2 class="logo">Prabhat</h2><p>Building intelligent systems.</p></div>
+    <div class="footer-links">
+      <a href="about.html">About</a><a href="projects.html">Projects</a>
+      <a href="resume.html">Resume</a><a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://github.com" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="mailto:prabhat@example.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 <span class="accent">Prabhat Sharma</span>. All rights reserved.</p>
+    <p>Built with <span class="accent">♥</span> and lots of Python</p>
+  </div>
+</footer>
+
+<script>
+  // Animate resume sections & skill bars on scroll
+  const sections = document.querySelectorAll('.resume-section');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        entry.target.querySelectorAll('.resume-skill-bar-fill').forEach(fill => {
+          fill.style.width = fill.getAttribute('data-width') + '%';
+        });
+      }
+    });
+  }, { threshold: 0.1 });
+  sections.forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>
