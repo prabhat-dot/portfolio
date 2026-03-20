@@ -1,340 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script type="application/ld+json">
-    { "@context": "https://schema.org", 
-    "@type": "Organization", 
-    "name": "Prabhat Sharma", 
-    "description": "AI Developer specializing in Machine Learning, NLP, and Deep Learning", 
-    "url": "https://prabhat-dot.github.io"
-    }
-  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Prabhat Sharma | AI Developer & ML Engineer</title>
-  <meta name="description" content="Prabhat Sharma — AI Developer specializing in Machine Learning, NLP, and Deep Learning. Building intelligent systems that transform data into insights.">
+  <title>Prabhat Sharma | AI Developer &amp; ML Engineer</title>
+  <meta name="description" content="Prabhat Sharma — AI Developer specializing in Machine Learning, NLP, and Deep Learning. Building intelligent systems that transform data into real-world impact.">
   <meta name="keywords" content="AI developer, machine learning, NLP, deep learning, Python, TensorFlow, PyTorch">
   <meta name="author" content="Prabhat Sharma">
-
-  <!-- Open Graph -->
   <meta property="og:title" content="Prabhat Sharma | AI Developer">
   <meta property="og:description" content="Building intelligent systems using ML, NLP, and Deep Learning.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://prabhat-sharma.dev">
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Prabhat Sharma | AI Developer">
-  <meta name="twitter:description" content="Building intelligent systems using ML, NLP, and Deep Learning.">
-
-  <link rel="preload" href="/css/style.css" as="style" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
-  <link rel="preload" href="https://cdnjs.cloudflare.com/.../all.min.css" as="style" onload="this.rel='stylesheet'">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=..." as="style" onload="this.rel='stylesheet'">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
   <script src="js/script.js" defer></script>
+  <!-- Google Analytics 4 (GA4) -->
+  <!-- Replace G-ZHM9T8088M with your actual Measurement ID from analytics.google.com -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHM9T8088M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZHM9T8088M', {
+      page_title: document.title,
+      page_location: window.location.href,
+      send_page_view: true
+    });
+  </script>
 </head>
 <body>
 
-<!-- Particle Background -->
 <div id="particles-js"></div>
 
-<!-- Navigation -->
 <nav>
   <h2 class="logo">Prabhat</h2>
-
   <ul id="navMenu">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="projects.html">Projects</a></li>
-    <li><a href="blog.html">Blog</a></li>
-    <li><a href="blog-post.html">Blog Post</a></li>
-    <li><a href="opensource.html">Open Source</a></li>
-    <li><a href="projects.html">Projects</a></li>
     <li><a href="services.html">Services</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="blog.html">Blog</a></li>
     <li><a href="testimonials.html">Testimonials</a></li>
+    <li><a href="opensource.html">Open Source</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-
   <div class="nav-right">
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-      <i class="fas fa-sun"></i>
-    </button>
-    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <a href="contact.html" class="nav-hire">Hire Me</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-sun"></i></button>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- Hero Section -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
     <div class="hero-greeting">Available for opportunities</div>
-
     <h1>Hi, I'm<br><span>Prabhat Sharma</span></h1>
-
     <p class="hero-tagline"><span class="typing"></span><span class="cursor-blink"></span></p>
-
-    <p class="hero-desc">
-      I build intelligent systems that bridge the gap between raw data and real-world impact —
-      specializing in ML, NLP, and deep learning pipelines.My journey in AI development began with a fascination for machine learning and its potential to revolutionize industries. I am since dedicated myself to mastering the latest technologies and techniques, including CNN, BERT, and ensemble models.His commitment to open-source contributions and community engagement has earned me recognition as a trusted expert in the field.
-    </p>
-
+    <p class="hero-desc">I build intelligent systems that bridge the gap between raw data and real-world impact — specializing in ML, NLP, and deep learning pipelines.</p>
     <div class="hero-buttons">
-      <a href="projects.html" class="btn">
-        <i class="fas fa-rocket"></i> Explore Projects
-      </a>
-      <a href="contact.html" class="btn-outline">
-        <i class="fas fa-paper-plane"></i> Let's Collaborate
-      </a>
-      <a href="#" class="btn-outline btn-sm" download>
-        <i class="fas fa-download"></i> Resume
-      </a>
+      <a href="projects.html" class="btn"><i class="fas fa-rocket"></i> Explore Projects</a>
+      <a href="contact.html" class="btn-outline"><i class="fas fa-paper-plane"></i> Let's Collaborate</a>
+      <a href="resume.html" class="btn-outline btn-sm"><i class="fas fa-file-alt"></i> Resume</a>
     </div>
-
     <div class="hero-social">
-      <a href="https://github.com/prabhat-dot" target="_blank" rel="noopener" aria-label="GitHub">
-        <i class="fab fa-github"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/prabhat-sharma-3a6705203/" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
-      <a href="mailto:prabhatindoria2@gmail.com" aria-label="Email">
-        <i class="fas fa-envelope"></i>
-      </a>
-      <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter">
-        <i class="fab fa-twitter"></i>
-      </a>
+      <a href="https://github.com/prabhat-sharma" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/prabhat-sharma" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="/cdn-cgi/l/email-protection#ee9e9c8f8c868f9aae8b968f839e828bc08d8183" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://twitter.com/prabhat_ai" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
     </div>
   </div>
-
   <div class="hero-right">
     <div class="profile-wrapper">
       <div class="profile-ring"></div>
       <div class="profile-fallback">🤖</div>
-      <!-- Replace with: <img src="images/images.jpg" class="profile" alt="Prabhat Sharma"> -->
-
-      <div class="profile-badge">
-        <span class="dot"></span>
-        Available for work
-      </div>
+      <!-- Swap with: <img src="images/profile.jpg" class="profile" alt="Prabhat Sharma"> -->
+      <div class="profile-badge"><span class="dot"></span>Available for work</div>
     </div>
   </div>
 </section>
 
-<!-- Stats Bar -->
-<div style="position:relative; z-index:1; max-width:1200px; margin: 0 auto; padding: 0 5%;">
+<!-- STATS -->
+<div style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 5%">
   <div class="hero-stats reveal">
-    <div class="stat-item">
-      <div class="stat-num" data-count="15" data-suffix="+">0+</div>
-      <div class="stat-label">Projects Delivered</div>
-    </div>
+    <div class="stat-item"><div class="stat-num" data-count="15" data-suffix="+">0+</div><div class="stat-label">Projects</div></div>
     <div class="stat-divider"></div>
-    <div class="stat-item">
-      <div class="stat-num" data-count="3" data-suffix="+">0+</div>
-      <div class="stat-label">Years of Experience</div>
-    </div>
+    <div class="stat-item"><div class="stat-num" data-count="3" data-suffix="+">0+</div><div class="stat-label">Years Exp.</div></div>
     <div class="stat-divider"></div>
-    <div class="stat-item">
-      <div class="stat-num" data-count="8" data-suffix="+">0+</div>
-      <div class="stat-label">Technologies used </div>
-    </div>
+    <div class="stat-item"><div class="stat-num" data-count="20" data-suffix="+">0+</div><div class="stat-label">Clients</div></div>
     <div class="stat-divider"></div>
-    <div class="stat-item">
-      <div class="stat-num" data-count="100" data-suffix="%">0%</div>
-      <div class="stat-label">Commitment Achieved</div>
-    </div>
+    <div class="stat-item"><div class="stat-num" data-count="100" data-suffix="%">0%</div><div class="stat-label">Committed</div></div>
   </div>
 </div>
 
-<!-- Skills Section -->
-<div class="skills-section" style="padding-top: 120px;">
+<!-- SKILLS -->
+<div class="skills-section" style="padding-top:110px">
   <div class="section-label reveal">Technical Skills</div>
   <h2 class="title reveal reveal-delay-1">What I <span>Build With</span></h2>
-
   <div class="skills-categories">
-
     <div class="skill-category-card">
-      <div class="skill-cat-header">
-        <div class="skill-cat-icon"><i class="fas fa-brain"></i></div>
-        <h3>Machine Learning</h3>
-      </div>
-      <div class="skill-bar-item">
-        <div class="skill-bar-top"><span>Scikit-Learn</span><span>92%</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div>
-      </div>
-      <div class="skill-bar-item">
-        <div class="skill-bar-top"><span>TensorFlow</span><span>88%</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
-      </div>
-      <div class="skill-bar-item">
-        <div class="skill-bar-top"><span>PyTorch</span><span>84%</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="84"></div></div>
-      </div>
+      <div class="skill-cat-header"><div class="skill-cat-icon"><i class="fas fa-brain"></i></div><h3>Machine Learning</h3></div>
+      <div class="skill-bar-item"><div class="skill-bar-top"><span>Scikit-Learn</span><span>92%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div></div>
+      <div class="skill-bar-item"><div class="skill-bar-top"><span>TensorFlow</span><span>88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div></div>
+      <div class="skill-bar-item"><div class="skill-bar-top"><span>PyTorch</span><span>85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div></div>
     </div>
-
     <div class="skill-category-card">
-      <div class="skill-cat-header">
-        <div class="skill-cat-icon" style="background:var(--accent-2-dim);color:var(--accent-2)"><i class="fas fa-language"></i></div>
-        <h3>NLP</h3>
-      </div>
-      <div class="skill-bar-item">
-        <div class="skill-bar-top"><span>BERT / Transformers</span><span>86%</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="86"></div></div>
-      </div>
-      <div class="skill-bar-item">
-        <div class="skill-bar-top"><span>spaCy / NLTK</span><span>90%</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
-      </div>
-      <div class="skill-bar-item">
-        <div class="skill-bar-top"><span>LangChain</span><span>78%</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="78"></div></div>
-      </div>
+      <div class="skill-cat-header"><div class="skill-cat-icon" style="background:var(--p-dim);color:var(--p)"><i class="fas fa-language"></i></div><h3>NLP</h3></div>
+      <div class="skill-bar-item"><div class="skill-bar-top"><span>BERT / Transformers</span><span>87%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="87"></div></div></div>
+      <div class="skill-bar-item"><div class="skill-bar-top"><span>spaCy / NLTK</span><span>91%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="91"></div></div></div>
+      <div class="skill-bar-item"><div class="skill-bar-top"><span>LangChain</span><span>79%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="79"></div></div></div>
     </div>
-
     <div class="skill-category-card">
-      <div class="skill-cat-header">
-        <div class="skill-cat-icon"><i class="fab fa-python"></i></div>
-        <h3>Python & Data</h3>
-      </div>
-      <div class="skill-bar-item">
-        <div class="skill-bar-top"><span>Python</span><span>95%</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div>
-      </div>
-      <div class="skill-bar-item">
-        <div class="skill-bar-top"><span>Pandas / NumPy</span><span>92%</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div>
-      </div>
-      <div class="skill-bar-item">
-        <div class="skill-bar-top"><span>OpenCV</span><span>80%</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
-      </div>
+      <div class="skill-cat-header"><div class="skill-cat-icon"><i class="fab fa-python"></i></div><h3>Python &amp; Data</h3></div>
+      <div class="skill-bar-item"><div class="skill-bar-top"><span>Python</span><span>95%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div></div>
+      <div class="skill-bar-item"><div class="skill-bar-top"><span>Pandas / NumPy</span><span>93%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="93"></div></div></div>
+      <div class="skill-bar-item"><div class="skill-bar-top"><span>OpenCV</span><span>81%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="81"></div></div></div>
     </div>
-
     <div class="skill-category-card">
-      <div class="skill-cat-header">
-        <div class="skill-cat-icon" style="background:var(--accent-2-dim);color:var(--accent-2)"><i class="fas fa-code"></i></div>
-        <h3>Web Development</h3>
-      </div>
-      <div class="skill-bar-item">
-        <div class="skill-bar-top"><span>Streamlit</span><span>88%</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
-      </div>
-      <div class="skill-bar-item">
-        <div class="skill-bar-top"><span>FastAPI / Flask</span><span>82%</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div>
-      </div>
-      <div class="skill-bar-item">
-        <div class="skill-bar-top"><span>JavaScript</span><span>75%</span></div>
-        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div>
-      </div>
+      <div class="skill-cat-header"><div class="skill-cat-icon" style="background:var(--p-dim);color:var(--p)"><i class="fas fa-server"></i></div><h3>APIs &amp; Deploy</h3></div>
+      <div class="skill-bar-item"><div class="skill-bar-top"><span>FastAPI / Flask</span><span>83%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="83"></div></div></div>
+      <div class="skill-bar-item"><div class="skill-bar-top"><span>Streamlit</span><span>89%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="89"></div></div></div>
+      <div class="skill-bar-item"><div class="skill-bar-top"><span>Docker</span><span>75%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div></div>
     </div>
-
   </div>
 </div>
 
-<!-- Featured Projects Preview -->
-<div style="position:relative; z-index:1; max-width:1200px; margin:0 auto; padding:80px 5%;">
+<!-- FEATURED PROJECTS -->
+<div style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:80px 5%">
   <div class="section-label reveal">Selected Work</div>
-  <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:2.5rem;">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.3rem;flex-wrap:wrap;gap:1rem">
     <h2 class="title reveal reveal-delay-1" style="margin-bottom:0">Featured <span>Projects</span></h2>
     <a href="projects.html" class="btn-outline btn-sm reveal reveal-delay-2">View All <i class="fas fa-arrow-right"></i></a>
   </div>
-
   <div class="projects-grid">
     <div class="project-card">
       <div class="project-img-placeholder">🤖</div>
       <div class="project-body">
         <div class="project-number">01</div>
         <h3>Emotion Detection System</h3>
-        <p>Multimodal AI system detecting emotions from text, images, and video using ensemble deep learning models. Also achieved very high accuracy of more than 85% on almost all the inputs. Produce the results using streamlit on interactive dashboard.</p>
-        <div class="project-tags">
-          <span class="tag green">PyTorch</span>
-          <span class="tag green">OpenCV</span>
-          <span class="tag">BERT</span>
-          <span class="tag">Streamlit</span>
-        </div>
-        <div class="project-links">
-          <a href="projects.html" class="btn btn-sm"><i class="fab fa-github"></i> GitHub</a>
-          <a href="projects.html" class="btn-outline btn-sm">Details</a>
-        </div>
+        <p>Multimodal AI detecting emotions from text, images, and video using ensemble deep learning — 91% accuracy on benchmarks.</p>
+        <div class="project-tags"><span class="tag green">PyTorch</span><span class="tag green">OpenCV</span><span class="tag">BERT</span><span class="tag">Streamlit</span></div>
+        <div class="project-links"><a href="https://github.com/prabhat-sharma" target="_blank" class="btn btn-sm"><i class="fab fa-github"></i> GitHub</a><a href="blog-post.html" class="btn-outline btn-sm">Case Study</a></div>
       </div>
     </div>
-
     <div class="project-card">
       <div class="project-img-placeholder">🔍</div>
       <div class="project-body">
         <div class="project-number">02</div>
         <h3>AI SEO Intelligence Platform</h3>
-        <p>Automated SEO auditing platform with keyword clustering, competitor analysis, and content optimization.Also produces complete SEO Report consisiting of color coding descrbing the problems and solutions.</p>
-        <div class="project-tags">
-          <span class="tag green">Python</span>
-          <span class="tag green">NLP</span>
-          <span class="tag">FastAPI</span>
-          <span class="tag">Scikit-Learn</span>
-        </div>
-        <div class="project-links">
-          <a href="projects.html" class="btn btn-sm"><i class="fab fa-github"></i> GitHub</a>
-          <a href="projects.html" class="btn-outline btn-sm">Details</a>
-        </div>
+        <p>Automated SEO auditing with keyword clustering, competitor analysis, and content optimization — 80% effort reduction.</p>
+        <div class="project-tags"><span class="tag green">Python</span><span class="tag green">NLP</span><span class="tag">FastAPI</span><span class="tag">Scikit-Learn</span></div>
+        <div class="project-links"><a href="https://github.com/prabhat-sharma" target="_blank" class="btn btn-sm"><i class="fab fa-github"></i> GitHub</a><a href="projects.html" class="btn-outline btn-sm">Details</a></div>
       </div>
     </div>
-
     <div class="project-card">
       <div class="project-img-placeholder">📝</div>
       <div class="project-body">
         <div class="project-number">03</div>
         <h3>CPU-Efficient Text Summarizer</h3>
-        <p>Optimized NLP summarization model built for CPU environments, achieving near-GPU performance. Summarzing the text of various articles and news outlets. </p>
-        <div class="project-tags">
-          <span class="tag green">Transformers</span>
-          <span class="tag green">ONNX</span>
-          <span class="tag">Python</span>
-          <span class="tag">HuggingFace</span>
-        </div>
-        <div class="project-links">
-          <a href="projects.html" class="btn btn-sm"><i class="fab fa-github"></i> GitHub</a>
-          <a href="projects.html" class="btn-outline btn-sm">Details</a>
-        </div>
+        <p>ONNX-quantized NLP summarization achieving near-GPU inference performance on CPU-only environments.</p>
+        <div class="project-tags"><span class="tag green">Transformers</span><span class="tag green">ONNX</span><span class="tag">Python</span><span class="tag">HuggingFace</span></div>
+        <div class="project-links"><a href="https://github.com/prabhat-sharma" target="_blank" class="btn btn-sm"><i class="fab fa-github"></i> GitHub</a><a href="projects.html" class="btn-outline btn-sm">Details</a></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Footer -->
+<!-- CTA -->
+<div style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 5% 96px">
+  <div class="cta-banner reveal">
+    <h2>Ready to build something <span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">intelligent?</span></h2>
+    <p>Let's work together to create AI systems that deliver real-world impact. First consultation is free.</p>
+    <div class="cta-btns">
+      <a href="services.html" class="btn"><i class="fas fa-rocket"></i> View Services</a>
+      <a href="contact.html" class="btn-outline"><i class="fas fa-paper-plane"></i> Get In Touch</a>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="footer-inner">
-    <div class="footer-brand">
-      <h2 class="logo">Prabhat</h2>
-      <p>Building intelligent systems.</p>
-    </div>
+    <div class="footer-brand"><h2 class="logo">Prabhat</h2><p>Building intelligent systems.</p></div>
     <div class="footer-links">
-      <a href="about.html">About</a>
-      <a href="projects.html">Projects</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
+      <a href="about.html">About</a><a href="projects.html">Projects</a><a href="services.html">Services</a>
+      <a href="resume.html">Resume</a><a href="blog.html">Blog</a><a href="testimonials.html">Testimonials</a>
+      <a href="opensource.html">Open Source</a><a href="contact.html">Contact</a>
     </div>
     <div class="footer-social">
-      <a href="https://github.com/prabhat-dot" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/prabhat-sharma-3a6705203/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      <a href="mailto:prabhatindoria2@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://github.com/prabhat-sharma" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/prabhat-sharma" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="/cdn-cgi/l/email-protection#29595b484b41485d694c51484459454c074a4644" aria-label="Email"><i class="fas fa-envelope"></i></a>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2025 <span class="accent">Prabhat Sharma</span>. All rights reserved.</p>
-    <p>Built with <span class="accent">♥</span> and lots of Python</p>
-  </div>
-</footer>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
+    <p>© 2025 <span class="ac">Prabhat Sharma</span>. All rights reserved.</p>
+    <p>Built with <s
