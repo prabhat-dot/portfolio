@@ -8,18 +8,8 @@
   <meta property="og:title" content="Emotion Detection Using Deep Learning">
   <meta property="og:type" content="article">
   <meta property="article:author" content="Prabhat Sharma">
-    <!-- Preconnect to external origins -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-
-  <!-- Google Fonts — non-blocking (display=swap) -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"></noscript>
   <link rel="stylesheet" href="css/style.css">
-  <!-- FontAwesome — loaded non-blocking -->
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"></noscript>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="js/script.js" defer></script>
   <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHM9T8088M"></script>
@@ -30,68 +20,6 @@
     gtag('config', 'G-ZHM9T8088M', { page_title: document.title, page_location: window.location.href });
   </script>
   <style>
-    /* Confidential code box */
-    .code-confidential {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      background: var(--bg2, #0a0f1e);
-      border: 1px solid var(--border, rgba(0,255,200,.11));
-      border-left: 3px solid var(--c, #00ffc8);
-      border-radius: var(--rs, 8px);
-      padding: 1.15rem 1.4rem;
-      margin: 1.4rem 0;
-      flex-wrap: wrap;
-    }
-    .code-conf-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: var(--c-dim, rgba(0,255,200,.11));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--c, #00ffc8);
-      font-size: 0.95rem;
-      flex-shrink: 0;
-    }
-    .code-conf-text {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 0.22rem;
-    }
-    .code-conf-text strong {
-      font-family: var(--ff-head, 'Syne', sans-serif);
-      font-size: 0.88rem;
-      color: var(--t1, #eef2ff);
-    }
-    .code-conf-text span {
-      font-family: var(--ff-mono, 'DM Mono', monospace);
-      font-size: 0.7rem;
-      color: var(--t3, #4a5568);
-      letter-spacing: 0.02em;
-    }
-    .code-conf-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.38rem;
-      padding: 0.42rem 1rem;
-      background: var(--grad, linear-gradient(135deg,#00ffc8,#7b6cff));
-      color: #000;
-      font-family: var(--ff-head, 'Syne', sans-serif);
-      font-weight: 700;
-      font-size: 0.74rem;
-      border-radius: 50px;
-      white-space: nowrap;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-    .code-conf-btn:hover {
-      opacity: 0.85;
-      transform: translateY(-1px);
-    }
-
     .post-layout { padding-top: calc(var(--nav-h, 68px) + 20px); }
     .post-body pre { position: relative; }
     .post-body pre .code-label {
@@ -102,42 +30,6 @@
     }
     .post-body pre code { display: block; padding-right: 3.5rem; }
   </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Emotion Detection Using Deep Learning: A Practical Guide",
-  "url": "https://prabhat-dot.github.io/blog-post.html",
-  "datePublished": "2025-03-01",
-  "dateModified": "2025-03-01",
-  "author": {
-    "@type": "Person",
-    "name": "Prabhat Sharma",
-    "url": "https://prabhat-dot.github.io"
-  },
-  "publisher": {
-    "@type": "Person",
-    "name": "Prabhat Sharma",
-    "url": "https://prabhat-dot.github.io"
-  },
-  "description": "A practical guide to building a multimodal emotion detection system using BERT, ResNet CNN, and ensemble fusion.",
-  "keywords": ["Deep Learning", "Emotion Detection", "BERT", "PyTorch", "Computer Vision", "NLP", "FastAPI"],
-  "articleSection": "Deep Learning",
-  "wordCount": "1800",
-  "timeRequired": "PT12M"
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://prabhat-dot.github.io/index.html" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://prabhat-dot.github.io/blog.html" },
-    { "@type": "ListItem", "position": 3, "name": "Emotion Detection Using Deep Learning", "item": "https://prabhat-dot.github.io/blog-post.html" }
-  ]
-}
-</script>
 </head>
 <body>
 
@@ -222,40 +114,75 @@
 
       <p>We use <strong>FER2013</strong> for facial expressions (35,887 images, 7 emotions) and <strong>GoEmotions</strong> for text (58,009 Reddit comments, collapsed to 7 labels for consistency).</p>
 
-      <div class="code-confidential">
-  <div class="code-conf-icon"><i class="fas fa-lock"></i></div>
-  <div class="code-conf-text">
-    <strong>Code Confidential</strong>
-    <span>The implementation code for this section is proprietary and not publicly shared.</span>
-  </div>
-  <a href="contact.html" class="code-conf-btn"><i class="fas fa-paper-plane"></i> Request Access</a>
-</div>
+      <pre><span class="code-label">Python</span><code>import torch
+import numpy as np
+import pandas as pd
+from torch.utils.data import Dataset
+import torchvision.transforms as transforms
+
+EMOTIONS = ['anger', 'disgust', 'fear', 'happy', 'neutral', 'sad', 'surprise']
+
+class FacialEmotionDataset(Dataset):
+    def __init__(self, data_path, transform=None):
+        self.data = pd.read_csv(data_path)
+        self.transform = transform or transforms.Compose([
+            transforms.ToPILImage(),
+            transforms.Resize((48, 48)),
+            transforms.RandomHorizontalFlip(),
+            transforms.ToTensor(),
+            transforms.Normalize(mean=[0.5], std=[0.5])
+        ])
+
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, idx):
+        pixels = np.array(
+            self.data.iloc[idx]['pixels'].split(),
+            dtype=np.uint8
+        ).reshape(48, 48)
+        label = self.data.iloc[idx]['emotion']
+        return self.transform(pixels), torch.tensor(label, dtype=torch.long)</code></pre>
 
       <h2 id="text-model">Text Branch: BERT Fine-Tuning</h2>
 
       <p>We fine-tune <code>bert-base-uncased</code> with differential learning rates — lower for BERT layers (avoid catastrophic forgetting), higher for the classification head:</p>
 
-      <div class="code-confidential">
-  <div class="code-conf-icon"><i class="fas fa-lock"></i></div>
-  <div class="code-conf-text">
-    <strong>Code Confidential</strong>
-    <span>The implementation code for this section is proprietary and not publicly shared.</span>
-  </div>
-  <a href="contact.html" class="code-conf-btn"><i class="fas fa-paper-plane"></i> Request Access</a>
-</div>
+      <pre><span class="code-label">Python</span><code>from transformers import BertForSequenceClassification
+import torch.nn as nn
+
+class EmotionBERT(nn.Module):
+    def __init__(self, num_classes=7, dropout=0.3):
+        super().__init__()
+        self.bert = BertForSequenceClassification.from_pretrained(
+            'bert-base-uncased',
+            num_labels=num_classes,
+            hidden_dropout_prob=dropout
+        )
+
+    def forward(self, input_ids, attention_mask):
+        return self.bert(
+            input_ids=input_ids,
+            attention_mask=attention_mask
+        ).logits</code></pre>
 
       <h2 id="fusion">Ensemble Fusion</h2>
 
       <p>A 2-layer MLP takes the 14-dimensional concatenated softmax outputs from both branches and predicts the final 7-class distribution:</p>
 
-      <div class="code-confidential">
-  <div class="code-conf-icon"><i class="fas fa-lock"></i></div>
-  <div class="code-conf-text">
-    <strong>Code Confidential</strong>
-    <span>The implementation code for this section is proprietary and not publicly shared.</span>
-  </div>
-  <a href="contact.html" class="code-conf-btn"><i class="fas fa-paper-plane"></i> Request Access</a>
-</div>
+      <pre><span class="code-label">Python</span><code>class FusionModel(nn.Module):
+    def __init__(self, input_dim=14, hidden=64, num_classes=7):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(input_dim, hidden),
+            nn.ReLU(),
+            nn.Dropout(0.3),
+            nn.Linear(hidden, num_classes)
+        )
+
+    def forward(self, text_probs, image_probs):
+        combined = torch.cat([text_probs, image_probs], dim=1)
+        return self.net(combined)</code></pre>
 
       <div class="callout warning">
         <span class="callout-icon"><i class="fas fa-triangle-exclamation"></i></span>
@@ -276,14 +203,26 @@
 
       <h2 id="deployment">Deployment with FastAPI</h2>
 
-      <div class="code-confidential">
-  <div class="code-conf-icon"><i class="fas fa-lock"></i></div>
-  <div class="code-conf-text">
-    <strong>Code Confidential</strong>
-    <span>The implementation code for this section is proprietary and not publicly shared.</span>
-  </div>
-  <a href="contact.html" class="code-conf-btn"><i class="fas fa-paper-plane"></i> Request Access</a>
-</div>
+      <pre><span class="code-label">Python</span><code>from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI(title="EmotionKit API")
+
+class EmotionRequest(BaseModel):
+    text: str | None = None
+    image_url: str | None = None
+
+@app.post("/predict")
+async def predict(request: EmotionRequest):
+    probs = model.predict(
+        text=request.text,
+        image_url=request.image_url
+    )
+    return {
+        "emotion":    EMOTIONS[probs.argmax()],
+        "confidence": float(probs.max()),
+        "all_scores": dict(zip(EMOTIONS, probs.tolist()))
+    }</code></pre>
 
       <h2 id="conclusion">Conclusion</h2>
 
@@ -331,8 +270,7 @@
     </div>
 
   </article><!-- /.post-article -->
-
-  <!-- Sidebar -->
+   <!-- Sidebar -->
   <aside class="post-sidebar">
 
     <div class="sb-widget">
@@ -403,7 +341,7 @@
     <div class="footer-social">
       <a href="https://github.com/prabhat-sharma" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
       <a href="https://linkedin.com/in/prabhat-sharma" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      <a href="/cdn-cgi/l/email-protection#7c0c0e1d1e141d08151218130e151d4e3c1b111d1510521f1311" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      <a href="mailto:prabhat@example.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -412,7 +350,7 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // Reading progress bar
   (function () {
     var bar = document.getElementById('reading-progress');
@@ -433,4 +371,18 @@
     if (!btn) return;
     btn.addEventListener('click', function (e) {
       e.preventDefault();
-      navigator.clipboard.writeText(window.location.href).then(function ()
+      navigator.clipboard.writeText(window.location.href).then(function () {
+        var orig = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        btn.style.color = 'var(--c)';
+        setTimeout(function () {
+          btn.innerHTML = orig;
+          btn.style.color = '';
+        }, 2200);
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
